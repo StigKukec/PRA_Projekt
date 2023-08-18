@@ -31,9 +31,9 @@ namespace MainApplication
                 }
             }
         }
-        public  Account GetAccount()
+        public Account GetAccount()
         {
             return Account;
-        }
+        } 
     }
 }

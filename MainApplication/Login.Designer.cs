@@ -47,9 +47,10 @@
             panel1.Controls.Add(lblEmail);
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(pnlLogoImage);
-            panel1.Location = new Point(3, 2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(397, 412);
+            panel1.Size = new Size(401, 412);
             panel1.TabIndex = 1;
             // 
             // tbPassword
@@ -112,6 +113,7 @@
             ClientSize = new Size(401, 412);
             Controls.Add(panel1);
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
