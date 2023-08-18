@@ -9,7 +9,7 @@ namespace Utilities
     public class Course
     {
         private const char Del = ':';
-        private static readonly string notificationsPath = FilePaths.GetFilePath("/Utilities/Resources/Kolegiji.txt");
+        private static readonly string notificationsPath = FilePaths.GetFilePath("/Utilities/Resources/Courses.txt");
         public Course(string title, int ects)
         {
             Title = title;
