@@ -30,79 +30,217 @@ namespace MainApplication
         /// </summary>
         private void InitializeComponent()
         {
+            listSubjects = new ListBox();
+            listLecturers = new ListBox();
+            btnInsertSubject = new Button();
+            btnUpdateSubject = new Button();
+            btnDeleteSubject = new Button();
+            btnInsertLecturer = new Button();
+            btnUpdateLecturer = new Button();
+            btnDeleteLecturer = new Button();
             pnlHeader = new Panel();
-            lblCredentials = new Label();
+            ucCredentials = new Credentials();
             lblTitle = new Label();
-            lblImage = new Label();
+            lblLogo = new Label();
+            flpNotifications = new FlowLayoutPanel();
+            pnlSubjects = new Panel();
+            pnlLecturers = new Panel();
             btnProfile = new Button();
             btnNotifications = new Button();
             btnSubjects = new Button();
             btnLecturers = new Button();
             btnAddNotification = new Button();
-            panel1 = new Panel();
-            panel5 = new Panel();
-            panel3 = new Panel();
+            pnlProfile = new Panel();
+            pnlProfile3 = new Panel();
+            lblProfileIcon = new Label();
+            lblAccCourse = new Label();
+            pnlProfile2 = new Panel();
+            lblTitleCourse = new Label();
+            pnlProfile1 = new Panel();
             lblAccPassword = new Label();
-            lblPassword = new Label();
-            lblEmail = new Label();
+            lblTitlePassword = new Label();
+            lblTitleEmail = new Label();
             lblAccEmail = new Label();
             lblAccLastName = new Label();
-            lblLastName = new Label();
+            lblTitleLastName = new Label();
             lblAccFirstName = new Label();
-            lblFirstName = new Label();
-            lblPersonIcon = new Label();
-            panel2 = new Panel();
+            lblTitleFirstName = new Label();
+            pnlFooter = new Panel();
+            ucLogOut = new LogOut();
             pnlHeader.SuspendLayout();
-            panel1.SuspendLayout();
+            pnlProfile.SuspendLayout();
             SuspendLayout();
+            // 
+            // listSubjects
+            // 
+            listSubjects.BackColor = Color.White;
+            listSubjects.DrawMode = DrawMode.OwnerDrawFixed;
+            listSubjects.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            listSubjects.ItemHeight = 40;
+            listSubjects.Location = new Point(100, 10);
+            listSubjects.Name = "listSubjects";
+            listSubjects.Size = new Size(1200, 500);
+            listSubjects.TabIndex = 0;
+            listSubjects.DrawItem += CentriranjeTexta_DrawItem;
+            listSubjects.SelectedIndexChanged += ListSubjects_SelectedIndexChanged;
+            // 
+            // listLecturers
+            // 
+            listLecturers.BackColor = Color.White;
+            listLecturers.DrawMode = DrawMode.OwnerDrawFixed;
+            listLecturers.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            listLecturers.ItemHeight = 40;
+            listLecturers.Location = new Point(100, 10);
+            listLecturers.Name = "listLecturers";
+            listLecturers.Size = new Size(1200, 500);
+            listLecturers.TabIndex = 0;
+            listLecturers.DrawItem += CentriranjeTexta_DrawItem;
+            listLecturers.SelectedIndexChanged += ListLecturers_SelectedIndexChanged;
+            // 
+            // btnInsertSubject
+            // 
+            btnInsertSubject.BackColor = Color.Orange;
+            btnInsertSubject.Cursor = Cursors.Hand;
+            btnInsertSubject.Location = new Point(400, 550);
+            btnInsertSubject.Name = "btnInsertSubject";
+            btnInsertSubject.Size = new Size(120, 50);
+            btnInsertSubject.TabIndex = 0;
+            btnInsertSubject.Text = "Stvori";
+            btnInsertSubject.UseVisualStyleBackColor = false;
+            btnInsertSubject.Click += BtnInsertSubject_Click;
+            // 
+            // btnUpdateSubject
+            // 
+            btnUpdateSubject.BackColor = Color.Gray;
+            btnUpdateSubject.Cursor = Cursors.Hand;
+            btnUpdateSubject.Location = new Point(600, 550);
+            btnUpdateSubject.Name = "btnUpdateSubject";
+            btnUpdateSubject.Size = new Size(120, 50);
+            btnUpdateSubject.TabIndex = 0;
+            btnUpdateSubject.Text = "Promijeni";
+            btnUpdateSubject.UseVisualStyleBackColor = false;
+            btnUpdateSubject.Click += BtnUpdateSubject_Click;
+            // 
+            // btnDeleteSubject
+            // 
+            btnDeleteSubject.BackColor = Color.Red;
+            btnDeleteSubject.Cursor = Cursors.Hand;
+            btnDeleteSubject.Location = new Point(800, 550);
+            btnDeleteSubject.Name = "btnDeleteSubject";
+            btnDeleteSubject.Size = new Size(120, 50);
+            btnDeleteSubject.TabIndex = 0;
+            btnDeleteSubject.Text = "Obriši";
+            btnDeleteSubject.UseVisualStyleBackColor = false;
+            btnDeleteSubject.Click += BtnDeleteSubject_Click;
+            // 
+            // btnInsertLecturer
+            // 
+            btnInsertLecturer.BackColor = Color.Orange;
+            btnInsertLecturer.Cursor = Cursors.Hand;
+            btnInsertLecturer.Location = new Point(400, 550);
+            btnInsertLecturer.Name = "btnInsertLecturer";
+            btnInsertLecturer.Size = new Size(120, 50);
+            btnInsertLecturer.TabIndex = 0;
+            btnInsertLecturer.Text = "Stvori";
+            btnInsertLecturer.UseVisualStyleBackColor = false;
+            btnInsertLecturer.Click += BtnInsertLecturer_Click;
+            // 
+            // btnUpdateLecturer
+            // 
+            btnUpdateLecturer.BackColor = Color.Gray;
+            btnUpdateLecturer.Cursor = Cursors.Hand;
+            btnUpdateLecturer.Location = new Point(600, 550);
+            btnUpdateLecturer.Name = "btnUpdateLecturer";
+            btnUpdateLecturer.Size = new Size(120, 50);
+            btnUpdateLecturer.TabIndex = 0;
+            btnUpdateLecturer.Text = "Promijeni";
+            btnUpdateLecturer.UseVisualStyleBackColor = false;
+            btnUpdateLecturer.Click += BtnUpdateLecturer_Click;
+            // 
+            // btnDeleteLecturer
+            // 
+            btnDeleteLecturer.BackColor = Color.Red;
+            btnDeleteLecturer.Cursor = Cursors.Hand;
+            btnDeleteLecturer.Location = new Point(800, 550);
+            btnDeleteLecturer.Name = "btnDeleteLecturer";
+            btnDeleteLecturer.Size = new Size(120, 50);
+            btnDeleteLecturer.TabIndex = 0;
+            btnDeleteLecturer.Text = "Obriši";
+            btnDeleteLecturer.UseVisualStyleBackColor = false;
+            btnDeleteLecturer.Click += BtnDeleteLecturer_Click;
             // 
             // pnlHeader
             // 
             pnlHeader.BackColor = SystemColors.ScrollBar;
-            pnlHeader.Controls.Add(lblCredentials);
+            pnlHeader.Controls.Add(ucCredentials);
             pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Controls.Add(lblImage);
+            pnlHeader.Controls.Add(lblLogo);
             pnlHeader.Location = new Point(1, 1);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1008, 88);
+            pnlHeader.Size = new Size(1283, 104);
             pnlHeader.TabIndex = 0;
             // 
-            // lblCredentials
+            // ucCredentials
             // 
-            lblCredentials.AutoSize = true;
-            lblCredentials.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCredentials.Location = new Point(825, 31);
-            lblCredentials.Name = "lblCredentials";
-            lblCredentials.Size = new Size(114, 23);
-            lblCredentials.TabIndex = 2;
-            lblCredentials.Text = "Ime i prezime";
+            ucCredentials.Location = new Point(963, 11);
+            ucCredentials.Name = "ucCredentials";
+            ucCredentials.Size = new Size(261, 74);
+            ucCredentials.TabIndex = 2;
+            ucCredentials.Click += UcCredentials_Click;
+            ucCredentials.Paint += UcCredentials_Paint;
+            ucCredentials.MouseEnter += UcCredentials_MouseEnter;
+            ucCredentials.MouseLeave += UcCredentials_MouseLeave;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTitle.Location = new Point(125, 20);
+            lblTitle.Location = new Point(164, 31);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(203, 46);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "INFOEDUKA";
             // 
-            // lblImage
+            // lblLogo
             // 
-            lblImage.AutoSize = true;
-            lblImage.Location = new Point(24, 33);
-            lblImage.Name = "lblImage";
-            lblImage.Size = new Size(51, 20);
-            lblImage.TabIndex = 0;
-            lblImage.Text = "Image";
+            lblLogo.Image = Properties.Resources.pik_logo;
+            lblLogo.Location = new Point(19, 11);
+            lblLogo.Name = "lblLogo";
+            lblLogo.Size = new Size(111, 84);
+            lblLogo.TabIndex = 0;
+            // 
+            // flpNotifications
+            // 
+            flpNotifications.AutoScroll = true;
+            flpNotifications.BackColor = SystemColors.ScrollBar;
+            flpNotifications.Location = new Point(185, 139);
+            flpNotifications.Name = "flpNotifications";
+            flpNotifications.Size = new Size(681, 340);
+            flpNotifications.TabIndex = 6;
+            // 
+            // pnlSubjects
+            // 
+            pnlSubjects.BackColor = SystemColors.ScrollBar;
+            pnlSubjects.Location = new Point(185, 139);
+            pnlSubjects.Name = "pnlSubjects";
+            pnlSubjects.Size = new Size(681, 340);
+            pnlSubjects.TabIndex = 6;
+            // 
+            // pnlLecturers
+            // 
+            pnlLecturers.BackColor = SystemColors.ScrollBar;
+            pnlLecturers.Location = new Point(185, 139);
+            pnlLecturers.Name = "pnlLecturers";
+            pnlLecturers.Size = new Size(681, 340);
+            pnlLecturers.TabIndex = 6;
             // 
             // btnProfile
             // 
             btnProfile.BackColor = Color.Orange;
             btnProfile.Cursor = Cursors.Hand;
-            btnProfile.Location = new Point(12, 95);
+            btnProfile.Location = new Point(20, 111);
             btnProfile.Name = "btnProfile";
-            btnProfile.Size = new Size(94, 29);
+            btnProfile.Size = new Size(111, 41);
             btnProfile.TabIndex = 1;
             btnProfile.Text = "Profil";
             btnProfile.UseVisualStyleBackColor = false;
@@ -111,9 +249,9 @@ namespace MainApplication
             // btnNotifications
             // 
             btnNotifications.Cursor = Cursors.Hand;
-            btnNotifications.Location = new Point(112, 95);
+            btnNotifications.Location = new Point(137, 111);
             btnNotifications.Name = "btnNotifications";
-            btnNotifications.Size = new Size(94, 29);
+            btnNotifications.Size = new Size(111, 41);
             btnNotifications.TabIndex = 2;
             btnNotifications.Text = "Obavijesti";
             btnNotifications.UseVisualStyleBackColor = true;
@@ -122,9 +260,9 @@ namespace MainApplication
             // btnSubjects
             // 
             btnSubjects.Cursor = Cursors.Hand;
-            btnSubjects.Location = new Point(212, 95);
+            btnSubjects.Location = new Point(268, 111);
             btnSubjects.Name = "btnSubjects";
-            btnSubjects.Size = new Size(94, 29);
+            btnSubjects.Size = new Size(111, 41);
             btnSubjects.TabIndex = 3;
             btnSubjects.Text = "Kolegiji";
             btnSubjects.UseVisualStyleBackColor = true;
@@ -133,9 +271,9 @@ namespace MainApplication
             // btnLecturers
             // 
             btnLecturers.Cursor = Cursors.Hand;
-            btnLecturers.Location = new Point(312, 95);
+            btnLecturers.Location = new Point(388, 111);
             btnLecturers.Name = "btnLecturers";
-            btnLecturers.Size = new Size(94, 29);
+            btnLecturers.Size = new Size(111, 41);
             btnLecturers.TabIndex = 4;
             btnLecturers.Text = "Predavači";
             btnLecturers.UseVisualStyleBackColor = true;
@@ -152,185 +290,264 @@ namespace MainApplication
             btnAddNotification.TabIndex = 5;
             btnAddNotification.Text = "+";
             btnAddNotification.UseVisualStyleBackColor = false;
-            btnAddNotification.Click += btnAddNotification_Click;
+            btnAddNotification.Click += BtnAddNotification_Click;
             // 
-            // panel1
+            // pnlProfile
             // 
-            panel1.BackColor = SystemColors.ScrollBar;
-            panel1.Controls.Add(panel5);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(lblAccPassword);
-            panel1.Controls.Add(lblPassword);
-            panel1.Controls.Add(lblEmail);
-            panel1.Controls.Add(lblAccEmail);
-            panel1.Controls.Add(lblAccLastName);
-            panel1.Controls.Add(lblLastName);
-            panel1.Controls.Add(lblAccFirstName);
-            panel1.Controls.Add(lblFirstName);
-            panel1.Controls.Add(lblPersonIcon);
-            panel1.Location = new Point(185, 139);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(681, 340);
-            panel1.TabIndex = 6;
+            pnlProfile.BackColor = SystemColors.ScrollBar;
+            pnlProfile.Controls.Add(pnlProfile3);
+            pnlProfile.Controls.Add(lblProfileIcon);
+            pnlProfile.Controls.Add(lblAccCourse);
+            pnlProfile.Controls.Add(pnlProfile2);
+            pnlProfile.Controls.Add(lblTitleCourse);
+            pnlProfile.Controls.Add(pnlProfile1);
+            pnlProfile.Controls.Add(lblAccPassword);
+            pnlProfile.Controls.Add(lblTitlePassword);
+            pnlProfile.Controls.Add(lblTitleEmail);
+            pnlProfile.Controls.Add(lblAccEmail);
+            pnlProfile.Controls.Add(lblAccLastName);
+            pnlProfile.Controls.Add(lblTitleLastName);
+            pnlProfile.Controls.Add(lblAccFirstName);
+            pnlProfile.Controls.Add(lblTitleFirstName);
+            pnlProfile.Location = new Point(307, 216);
+            pnlProfile.Name = "pnlProfile";
+            pnlProfile.Size = new Size(727, 366);
+            pnlProfile.TabIndex = 6;
             // 
-            // panel5
+            // pnlProfile3
             // 
-            panel5.BackColor = Color.Orange;
-            panel5.Location = new Point(27, 188);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(607, 10);
-            panel5.TabIndex = 10;
+            pnlProfile3.Anchor = AnchorStyles.Top;
+            pnlProfile3.BackColor = Color.Orange;
+            pnlProfile3.Location = new Point(57, 293);
+            pnlProfile3.Name = "pnlProfile3";
+            pnlProfile3.Size = new Size(607, 10);
+            pnlProfile3.TabIndex = 13;
             // 
-            // panel3
+            // lblProfileIcon
             // 
-            panel3.BackColor = Color.Orange;
-            panel3.Location = new Point(27, 70);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(607, 10);
-            panel3.TabIndex = 9;
+            lblProfileIcon.BackgroundImageLayout = ImageLayout.Stretch;
+            lblProfileIcon.BorderStyle = BorderStyle.FixedSingle;
+            lblProfileIcon.Image = Properties.Resources.user_icon;
+            lblProfileIcon.Location = new Point(16, 12);
+            lblProfileIcon.Name = "lblProfileIcon";
+            lblProfileIcon.Size = new Size(75, 77);
+            lblProfileIcon.TabIndex = 11;
+            // 
+            // lblAccCourse
+            // 
+            lblAccCourse.Anchor = AnchorStyles.Top;
+            lblAccCourse.AutoSize = true;
+            lblAccCourse.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAccCourse.Location = new Point(167, 329);
+            lblAccCourse.Name = "lblAccCourse";
+            lblAccCourse.Size = new Size(59, 23);
+            lblAccCourse.TabIndex = 12;
+            lblAccCourse.Text = "label3";
+            // 
+            // pnlProfile2
+            // 
+            pnlProfile2.Anchor = AnchorStyles.Top;
+            pnlProfile2.BackColor = Color.Orange;
+            pnlProfile2.Location = new Point(57, 210);
+            pnlProfile2.Name = "pnlProfile2";
+            pnlProfile2.Size = new Size(607, 10);
+            pnlProfile2.TabIndex = 10;
+            // 
+            // lblTitleCourse
+            // 
+            lblTitleCourse.Anchor = AnchorStyles.Top;
+            lblTitleCourse.AutoSize = true;
+            lblTitleCourse.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitleCourse.Location = new Point(181, 306);
+            lblTitleCourse.Name = "lblTitleCourse";
+            lblTitleCourse.Size = new Size(76, 23);
+            lblTitleCourse.TabIndex = 11;
+            lblTitleCourse.Text = "Kolegiji:";
+            // 
+            // pnlProfile1
+            // 
+            pnlProfile1.Anchor = AnchorStyles.Top;
+            pnlProfile1.BackColor = Color.Orange;
+            pnlProfile1.Location = new Point(57, 92);
+            pnlProfile1.Name = "pnlProfile1";
+            pnlProfile1.Size = new Size(607, 10);
+            pnlProfile1.TabIndex = 9;
             // 
             // lblAccPassword
             // 
+            lblAccPassword.Anchor = AnchorStyles.Top;
             lblAccPassword.AutoSize = true;
-            lblAccPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAccPassword.Location = new Point(458, 238);
+            lblAccPassword.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAccPassword.Location = new Point(488, 260);
             lblAccPassword.Name = "lblAccPassword";
-            lblAccPassword.Size = new Size(51, 20);
+            lblAccPassword.Size = new Size(59, 23);
             lblAccPassword.TabIndex = 8;
             lblAccPassword.Text = "label7";
             // 
-            // lblPassword
+            // lblTitlePassword
             // 
-            lblPassword.AutoSize = true;
-            lblPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPassword.Location = new Point(471, 201);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(62, 20);
-            lblPassword.TabIndex = 7;
-            lblPassword.Text = "Lozinka";
+            lblTitlePassword.Anchor = AnchorStyles.Top;
+            lblTitlePassword.AutoSize = true;
+            lblTitlePassword.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitlePassword.Location = new Point(501, 223);
+            lblTitlePassword.Name = "lblTitlePassword";
+            lblTitlePassword.Size = new Size(76, 23);
+            lblTitlePassword.TabIndex = 7;
+            lblTitlePassword.Text = "Lozinka:";
             // 
-            // lblEmail
+            // lblTitleEmail
             // 
-            lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmail.Location = new Point(471, 83);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(53, 20);
-            lblEmail.TabIndex = 6;
-            lblEmail.Text = "E-mail";
+            lblTitleEmail.Anchor = AnchorStyles.Top;
+            lblTitleEmail.AutoSize = true;
+            lblTitleEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitleEmail.Location = new Point(501, 105);
+            lblTitleEmail.Name = "lblTitleEmail";
+            lblTitleEmail.Size = new Size(66, 23);
+            lblTitleEmail.TabIndex = 6;
+            lblTitleEmail.Text = "E-mail:";
             // 
             // lblAccEmail
             // 
+            lblAccEmail.Anchor = AnchorStyles.Top;
             lblAccEmail.AutoSize = true;
-            lblAccEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAccEmail.Location = new Point(458, 120);
+            lblAccEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAccEmail.Location = new Point(488, 142);
             lblAccEmail.Name = "lblAccEmail";
-            lblAccEmail.Size = new Size(51, 20);
+            lblAccEmail.Size = new Size(59, 23);
             lblAccEmail.TabIndex = 5;
             lblAccEmail.Text = "label6";
             // 
             // lblAccLastName
             // 
+            lblAccLastName.Anchor = AnchorStyles.Top;
             lblAccLastName.AutoSize = true;
-            lblAccLastName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAccLastName.Location = new Point(135, 238);
+            lblAccLastName.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAccLastName.Location = new Point(165, 260);
             lblAccLastName.Name = "lblAccLastName";
-            lblAccLastName.Size = new Size(51, 20);
+            lblAccLastName.Size = new Size(59, 23);
             lblAccLastName.TabIndex = 4;
             lblAccLastName.Text = "label3";
             // 
-            // lblLastName
+            // lblTitleLastName
             // 
-            lblLastName.AutoSize = true;
-            lblLastName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLastName.Location = new Point(151, 201);
-            lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(65, 20);
-            lblLastName.TabIndex = 3;
-            lblLastName.Text = "Prezime";
+            lblTitleLastName.Anchor = AnchorStyles.Top;
+            lblTitleLastName.AutoSize = true;
+            lblTitleLastName.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitleLastName.Location = new Point(181, 223);
+            lblTitleLastName.Name = "lblTitleLastName";
+            lblTitleLastName.Size = new Size(79, 23);
+            lblTitleLastName.TabIndex = 3;
+            lblTitleLastName.Text = "Prezime:";
             // 
             // lblAccFirstName
             // 
+            lblAccFirstName.Anchor = AnchorStyles.Top;
             lblAccFirstName.AutoSize = true;
-            lblAccFirstName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAccFirstName.Location = new Point(135, 120);
+            lblAccFirstName.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAccFirstName.Location = new Point(165, 142);
             lblAccFirstName.Name = "lblAccFirstName";
-            lblAccFirstName.Size = new Size(51, 20);
+            lblAccFirstName.Size = new Size(59, 23);
             lblAccFirstName.TabIndex = 2;
             lblAccFirstName.Text = "label2";
             // 
-            // lblFirstName
+            // lblTitleFirstName
             // 
-            lblFirstName.AutoSize = true;
-            lblFirstName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFirstName.Location = new Point(151, 83);
-            lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(36, 20);
-            lblFirstName.TabIndex = 1;
-            lblFirstName.Text = "Ime";
+            lblTitleFirstName.Anchor = AnchorStyles.Top;
+            lblTitleFirstName.AutoSize = true;
+            lblTitleFirstName.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitleFirstName.Location = new Point(181, 105);
+            lblTitleFirstName.Name = "lblTitleFirstName";
+            lblTitleFirstName.Size = new Size(45, 23);
+            lblTitleFirstName.TabIndex = 1;
+            lblTitleFirstName.Text = "Ime:";
             // 
-            // lblPersonIcon
+            // pnlFooter
             // 
-            lblPersonIcon.AutoSize = true;
-            lblPersonIcon.Location = new Point(14, 24);
-            lblPersonIcon.Name = "lblPersonIcon";
-            lblPersonIcon.Size = new Size(84, 20);
-            lblPersonIcon.TabIndex = 0;
-            lblPersonIcon.Text = "Person icon";
+            pnlFooter.BackColor = Color.Orange;
+            pnlFooter.Location = new Point(1, 687);
+            pnlFooter.Name = "pnlFooter";
+            pnlFooter.Size = new Size(1283, 67);
+            pnlFooter.TabIndex = 7;
             // 
-            // panel2
+            // ucLogOut
             // 
-            panel2.BackColor = Color.Orange;
-            panel2.Location = new Point(1, 485);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1008, 49);
-            panel2.TabIndex = 7;
+            ucLogOut.BackColor = Color.Orange;
+            ucLogOut.Location = new Point(963, 11);
+            ucLogOut.Name = "ucLogOut";
+            ucLogOut.Size = new Size(261, 74);
+            ucLogOut.TabIndex = 2;
+            ucLogOut.Visible = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1006, 531);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            Controls.Add(btnAddNotification);
+            ClientSize = new Size(1282, 753);
+            Controls.Add(ucLogOut);
+            Controls.Add(pnlFooter);
+            Controls.Add(pnlProfile);
             Controls.Add(btnLecturers);
             Controls.Add(btnSubjects);
             Controls.Add(btnNotifications);
             Controls.Add(btnProfile);
             Controls.Add(pnlHeader);
+            MinimumSize = new Size(1300, 800);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Infoeduka";
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlProfile.ResumeLayout(false);
+            pnlProfile.PerformLayout();
             ResumeLayout(false);
         }
+
+
+
+
+
+
+
+
 
         #endregion
 
         private Panel pnlHeader;
-        private Label lblCredentials;
+        private Panel pnlSubjects;
+        private Panel pnlLecturers;
+        private Panel pnlFooter;
+        private Panel pnlProfile2;
+        private Panel pnlProfile1;
+        private Panel pnlProfile;
         private Label lblTitle;
-        private Label lblImage;
+        private Label lblLogo;
+        private Label lblAccPassword;
+        private Label lblTitlePassword;
+        private Label lblTitleEmail;
+        private Label lblAccEmail;
+        private Label lblAccLastName;
+        private Label lblTitleLastName;
+        private Label lblAccFirstName;
+        private Label lblTitleFirstName;
+        private Label lblProfileIcon;
+        private FlowLayoutPanel flpNotifications;
+        private ListBox listSubjects;
+        private ListBox listLecturers;
         private Button btnProfile;
         private Button btnNotifications;
         private Button btnSubjects;
         private Button btnLecturers;
         private Button btnAddNotification;
-        private Panel panel1;
-        private Label lblAccPassword;
-        private Label lblPassword;
-        private Label lblEmail;
-        private Label lblAccEmail;
-        private Label lblAccLastName;
-        private Label lblLastName;
-        private Label lblAccFirstName;
-        private Label lblFirstName;
-        private Label lblPersonIcon;
-        private Panel panel2;
-        private Panel panel5;
-        private Panel panel3;
+        private Button btnInsertSubject;
+        private Button btnUpdateSubject;
+        private Button btnDeleteSubject;
+        private Button btnInsertLecturer;
+        private Button btnUpdateLecturer;
+        private Button btnDeleteLecturer;
+        private Credentials ucCredentials;
+        private LogOut ucLogOut;
+        private Panel pnlProfile3;
+        private Label lblAccCourse;
+        private Label lblTitleCourse;
     }
 }

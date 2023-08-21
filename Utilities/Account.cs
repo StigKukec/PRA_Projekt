@@ -44,19 +44,10 @@ namespace Utilities
 
             return list;
         }
-        public static List<Account> GetLecturers()
+        public static List<Account> GetAccounts()
         {
             List<Account> accounts = ParseAccount();
-            List<Account> accounts_copy = new();
-
-            foreach (Account account in accounts)
-            {
-                if (account.Role != administrator)
-                {
-                    accounts_copy.Add(account);
-                }
-            }
-            return accounts_copy;
+            return accounts;
         }
         public static bool IsLecturer()
         {

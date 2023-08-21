@@ -24,7 +24,7 @@ namespace MainApplication
 
         public LecturerManagerForm(string firstName, string lastName, string email, string password, string courses)
         {
-            accounts = Account.GetLecturers();
+            accounts = Account.GetAccounts();
             this.firstname = firstName;
             this.lastname = lastName;
             update = true;
