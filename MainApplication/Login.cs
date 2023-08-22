@@ -16,24 +16,47 @@ namespace MainApplication
     {
         private List<Account> accounts = Account.ParseAccount();
         private Account Account { get; set; }
+        private bool loginSuccess = false;
         public Login()
         {
             InitializeComponent();
+            PictureBox pictureBox = new PictureBox
+            {
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Dock = DockStyle.Fill,
+                Image = Properties.Resources.pik_logo
+            };
+            pnlLogoImage.Controls.Add(pictureBox);
+            lblFailLogin.Visible = false;
         }
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             foreach (Account account in accounts)
             {
-                if (account.Email == "l.z@racunarstvo.hr" && account.Password == "Pa$$w0rd")
+                if (account.Email == tbEmail.Text && account.Password == tbPassword.Text)
                 {
+                    loginSuccess = true;
                     this.Dispose();
                     Account = account;
                 }
             }
+            if (loginSuccess == false) 
+            {
+                lblFailLogin.Visible = true;
+            }
+
         }
         public Account GetAccount()
         {
             return Account;
-        } 
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

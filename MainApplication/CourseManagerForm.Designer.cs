@@ -102,7 +102,7 @@
             Controls.Add(label1);
             Name = "CourseManagerForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "InsertSubject";
+            Text = "Upravljač kolegija";
             ((System.ComponentModel.ISupportInitialize)nudEctsNumber).EndInit();
             ResumeLayout(false);
             PerformLayout();
