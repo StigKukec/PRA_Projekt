@@ -5,18 +5,18 @@ namespace MainApplication
 {
     public partial class Form1 : Form
     {
-        private Login login = new Login();
+        private readonly Login login = new Login();
         bool logoutButton = false;
         private List<Notification> notifications;
         private List<Course> subjects;
         private List<Account> lecturers;
         private int selectedSubValue;
         private int selectedLectValue;
-        private string notificationTitle = "lblMessageTitle";
-        private string notificationMessage = "rtbMessage";
-        private string notificationDelete = "lblDeleteNotification";
-        private string notificationCourse = "lblMessageCourse";
-        private string administrator = "administrator";
+        private readonly string notificationTitle = "lblMessageTitle";
+        private readonly string notificationMessage = "rtbMessage";
+        private readonly string notificationDelete = "lblDeleteNotification";
+        private readonly string notificationCourse = "lblMessageCourse";
+        private readonly string administrator = "administrator";
         private Course subject;
         private Account lecturer;
         private readonly Account acc;
@@ -38,45 +38,37 @@ namespace MainApplication
         }
         private bool Authorization()
         {
-            return acc.Role == administrator;
+            return acc != null ? acc.Role == administrator : false;
         }
         private void Profile()
         {
+
             if (!Authorization())
             {
                 Controls.Remove(btnLecturers);
             }
-            string print = $"{acc.FirstName} {acc.LastName}";
-            ucCredentials.Credential = print;
-            lblAccFirstName.Text = acc.FirstName;
-            lblAccLastName.Text = acc.LastName;
-            lblAccEmail.Text = acc.Email;
-            lblAccPassword.Text = acc.Password;
-            PictureBox pictureBox = new PictureBox
+            if (acc != null)
             {
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Dock = DockStyle.Fill,
-                //*************************************************************************************************
-                Image = Properties.Resources.pik_logo
-                //*************************************************************************************************
-            };
-            lblLogo.Controls.Add(pictureBox);
-            if (acc.Course == string.Empty || acc.Course == null)
-            {
-                lblAccCourse.Text = "Ne vodite nijedan kolgij";
-            }
-            else
-            {
-                lblAccCourse.Text = acc.Course;
+                string print = $"{acc.FirstName} {acc.LastName}";
+                ucCredentials.Credential = print;
+                lblAccFirstName.Text = acc.FirstName;
+                lblAccLastName.Text = acc.LastName;
+                lblAccEmail.Text = acc.Email;
+                lblAccPassword.Text = acc.Password;
+                PictureBox pictureBox = new PictureBox
+                {
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Dock = DockStyle.Fill,
+                    Image = Properties.Resources.pik_logo
+                };
+                lblLogo.Controls.Add(pictureBox);
+                lblAccCourse.Text = acc.Course == string.Empty || acc.Course == null ? "Ne vodite nijedan kolgij" : acc.Course;
             }
         }
         private void Notifications()
         {
             flpNotifications.Controls.Clear();
-            if (notifications != null)
-            {
-                notifications.Clear();
-            }
+            notifications?.Clear();
             notifications = Notification.GetNotifications();
             foreach (Notification notification in notifications)
             {
@@ -147,7 +139,6 @@ namespace MainApplication
                     }
                 }
             }
-            //------------------------------------------------------------
             Notifications();
         }
         private void LblDeleteNotification_MouseLeave(object sender, EventArgs e)
@@ -204,7 +195,7 @@ namespace MainApplication
             ResponsiveControl(btnProfile, 0.1, 0.055, 0, 0.1);
             ResponsiveControl(btnSubjects, 0.1, 0.055, 0.2, 0.1);
 
-            ResponsiveControl(lblLogo, 0.1, 0.05, 0.05, 0.025);
+            ResponsiveControl(lblLogo, 0.2, 0.2, -0.03, -0.05);
             ResponsiveControl(lblTitle, 0.1, 0.1, 0.15, 0.025);
             ResponsiveControl(ucCredentials, 0.13, 0.06, 0.85, 0.025);
             ResponsiveControl(ucLogOut, 0.1255, 0.125, 0.8525, 0.08);
@@ -439,7 +430,6 @@ namespace MainApplication
             insertSubject.ShowDialog();
             FillSubjectList();
         }
-        ///-----------------------------------------------------
         private void BtnUpdateSubject_Click(object sender, EventArgs e)
         {
             foreach (Course subjecti in subjects)
@@ -477,7 +467,6 @@ namespace MainApplication
             }
             selectedSubValue = 0;
         }
-        //--------------------------------------------------------------
         private void BtnInsertLecturer_Click(object sender, EventArgs e)
         {
             LecturerManagerForm insertLecturer = new LecturerManagerForm();
@@ -513,15 +502,7 @@ namespace MainApplication
         private void BtnDeleteLecturer_Click(object sender, EventArgs e)
         {
             listLecturers.Items.RemoveAt(selectedLectValue);
-            foreach (Account lectureri in lecturers)
-            {
-                if (lecturer.FirstName == lecturer.FirstName && lecturer.LastName == lecturer.LastName)
-                {
-                    lecturers.Remove(lectureri);
-                }
-            }
-            //lecturers.RemoveAt(selectedLectValue);
-
+            lecturers.RemoveAll(lect => lect.FirstName == lecturer.FirstName && lect.LastName == lecturer.LastName);
             Account.StoreLecturers(lecturers);
             selectedLectValue = 0;
         }
@@ -541,6 +522,5 @@ namespace MainApplication
                 lecturer = (Account)listLecturers.SelectedItem;
             }
         }
-
     }
 }

@@ -55,20 +55,34 @@ namespace MainApplication
 
         private void UpdateSubject()
         {
-            foreach (Course subject in subjects)
+            if (FormValid())
             {
-                if (title == subject.Title && ects == subject.Ects)
+                foreach (Course subject in subjects)
                 {
-                    subject.Title = tbSubjectTitle.Text;
-                    subject.Ects = int.Parse(nudEctsNumber.Text);
+                    if (title == subject.Title && ects == subject.Ects)
+                    {
+                        subject.Title = tbSubjectTitle.Text;
+                        subject.Ects = int.Parse(nudEctsNumber.Text);
+                    }
                 }
+                Course.StoreSubjects(subjects);
             }
-            Course.StoreSubjects(subjects);
         }
 
         private void CreateSubject()
         {
-            Course.StoreSubject(new Course(tbSubjectTitle.Text, int.Parse(nudEctsNumber.Controls.Owner.Text)));
+            if (FormValid())
+            {
+                Course.StoreSubject(new Course(tbSubjectTitle.Text, int.Parse(nudEctsNumber.Controls.Owner.Text)));
+            }
+        }
+        private bool FormValid()
+        {
+            if (tbSubjectTitle == null || tbSubjectTitle.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -110,5 +110,6 @@ namespace MainApplication
             cbCourses.Items.AddRange(courses.Select(x => x.Title).ToArray());
             cbCourses.SelectedItem = lecturer;
         }
+       
     }
 }

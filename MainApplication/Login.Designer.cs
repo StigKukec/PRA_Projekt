@@ -35,12 +35,14 @@
             lblEmail = new Label();
             btnLogin = new Button();
             pnlLogoImage = new Panel();
+            lblFailLogin = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(lblFailLogin);
             panel1.Controls.Add(tbPassword);
             panel1.Controls.Add(tbEmail);
             panel1.Controls.Add(lblPassword);
@@ -100,11 +102,20 @@
             // 
             // pnlLogoImage
             // 
-            pnlLogoImage.BackColor = SystemColors.ActiveCaptionText;
-            pnlLogoImage.Location = new Point(140, 17);
+            pnlLogoImage.Location = new Point(117, 12);
             pnlLogoImage.Name = "pnlLogoImage";
-            pnlLogoImage.Size = new Size(111, 95);
+            pnlLogoImage.Size = new Size(173, 143);
             pnlLogoImage.TabIndex = 0;
+            // 
+            // lblFailLogin
+            // 
+            lblFailLogin.AutoSize = true;
+            lblFailLogin.ForeColor = Color.Red;
+            lblFailLogin.Location = new Point(117, 298);
+            lblFailLogin.Name = "lblFailLogin";
+            lblFailLogin.Size = new Size(191, 20);
+            lblFailLogin.TabIndex = 6;
+            lblFailLogin.Text = "Nije valjan email ili lozinka!";
             // 
             // Login
             // 
@@ -115,6 +126,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            FormClosing += Login_FormClosing;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -129,5 +141,6 @@
         private Label lblEmail;
         private Button btnLogin;
         private Panel pnlLogoImage;
+        private Label lblFailLogin;
     }
 }

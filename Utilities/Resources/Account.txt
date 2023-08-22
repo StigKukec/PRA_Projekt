@@ -1,6 +1,4 @@
-Luka¤Zvijezdohodac¤l.z@racunarstvo.hr¤Pa$$w0rd¤administrator¤
-Laj¤Beli¤l.b@racunarstvo.hr¤Pa%%word¤lecturer¤Matematika
-Igor¤Belan¤i.b@racunarstvo.hr¤Pa55w.rd¤lecturer¤Matematika
-Danijel¤Kucak¤dkucak@racunarstvo.hr¤dkucak¤lecturer¤Matematika
-Bele¤Danijel¤dbele@racunarstvo.hr¤dbele¤lecturer¤Strukture podataka i algoritmi, Java 1
-Fabijanić¤Mario¤mfabijanic@racunarstvo.hr¤mfb¤administrator¤
+Zvijezdohodac¤Luka¤l.z@racunarstvo.hr¤Pa$$w0rd¤administrator¤
+Kucak¤Danijel¤dkucak@racunarstvo.hr¤dkucak¤lecturer¤Matematika
+Danijel¤Bele¤dbele@racunarstvo.hr¤dbele¤lecturer¤Strukture podataka i algoritmi, Java 1
+Mario¤Fabijanić¤mfabijanic@racunarstvo.hr¤mfb¤administrator¤
